@@ -1,16 +1,4 @@
-terraform {
-  required_version = ">= 1.3"  //latest terraform version
-  required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = ">= 3.0"
-    }
-    random = {
-      source = "hashicorp/random"
-      version = "3.4.3"
-    }
-}
-}
+
 # Create Random Pet Resource
 resource "random_pet" "this" {
   length = 1
