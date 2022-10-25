@@ -1,5 +1,5 @@
 variable "ami" {
-  description = "teh jkfsfs"
+  description = "just testing"
   type = string
   default = "yewfiuyfeiu"
 }
