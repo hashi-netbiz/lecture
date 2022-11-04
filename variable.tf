@@ -1,5 +1,4 @@
-variable "ami" {
-  description = "just testing"
+variable "user_arn" {
   type = string
-  default = "yewfiuyfeiu"
+  default = "arn:aws:iam::287074925751:user/jones"
 }
