@@ -3,6 +3,7 @@
 Install Terraform Official installation instructions from HashiCorp: https://learn.hashicorp.com/tutorials/terraform/install-cli
 
 AWS Account Setup
+
   create non-root AWS user
   give the user AdministratorAccess permission
   Save Access key + secret key (or use AWS CLI aws configure - see link below)
