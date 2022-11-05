@@ -1,4 +1,4 @@
-Setup
+02 - Overview + Setup
 Install Terraform
 
 Official installation instructions from HashiCorp: https://learn.hashicorp.com/tutorials/terraform/install-cli
@@ -9,3 +9,4 @@ AWS Terraform provider documentation: https://registry.terraform.io/providers/ha
     create non-root AWS user
     Add the necessary IAM roles (e.g. AmazonEC2FullAccess)
     Save Access key + secret key (or use AWS CLI aws configure -- https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html)
+
