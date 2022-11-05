@@ -1,0 +1,3 @@
+SOME USEFUL LINKS TO UNDERSTAND TERRAFORM AS AN INFRASTRUCTURE AS CODE (IAC) TOOL 
+
+1) https://developer.hashicorp.com/terraform/intro
