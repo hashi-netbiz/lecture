@@ -2,6 +2,8 @@
 Install Terraform
 
 Official installation instructions from HashiCorp: https://learn.hashicorp.com/tutorials/terraform/install-cli
+
+
 AWS Account Setup
 
 AWS Terraform provider documentation: https://registry.terraform.io/providers/hashicorp/aws/latest/docs#authentication
