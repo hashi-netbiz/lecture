@@ -1,4 +1,4 @@
-02 - Overview + Setup
+02 - Setup
 
 Install Terraform
     Official installation instructions from HashiCorp: https://learn.hashicorp.com/tutorials/terraform/install-cli
