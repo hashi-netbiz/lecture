@@ -1,7 +1,7 @@
-# variable "user_arn" {
-#   type = string
-#   default = "arn:aws:iam::287074925751:user/jones"
-# }
+variable "user_arn" {
+   type = string
+   default = "arn:aws:iam::287074925751:user/jones"
+}
 
 variable "instanceTypes" {
   description = "my dog list"
@@ -40,3 +40,5 @@ variable "prodTags" {
     manager ="jjkjjs"
   }
 }
+
+
