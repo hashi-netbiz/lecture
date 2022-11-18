@@ -1,0 +1,1 @@
+Hashicorp official guideline :  https://developer.hashicorp.com/terraform/language
