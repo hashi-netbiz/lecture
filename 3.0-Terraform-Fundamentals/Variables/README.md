@@ -1,6 +1,6 @@
 # Variables in Terraform
 
-This is part of the Terraform Basics path. In this video and demo, we are going to cover what Terraform input variables are and how you can use them. As a point of disambiguation, **Variables** and **Input Variables** are used interchangeably. For brevity, I am going to use the term variables, but it is safe to assume I am talking about input variables.
+This is part of the Terraform Basics path. In this section and demo, we are going to cover what Terraform input variables are and how you can use them. As a point of disambiguation, **Variables** and **Input Variables** are used interchangeably. For brevity, I am going to use the term variables, but it is safe to assume I am talking about input variables.
 
 Variables define arguments for a Terraform module. You can pass values to a Terraform module using those arguments. The logistics of how you pass values will be covered later. Values are passed during a Terraform evaluation. Each time Terraform evaluates a configuration, values for each defined variable need to be supplied. Terraform does not store the values supplied for variables in the state data.
 
