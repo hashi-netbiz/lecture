@@ -1,18 +1,17 @@
 terraform {
-  required_version = ">= 1.3" //latest terraform version
+  
+  backend "s3" {
+    bucket         = "devops-directive-tf-netbiz" # REPLACE WITH YOUR BUCKET NAME
+    key            = "backend/import-bootstrap/terraform.tfstate"
+    region         = "us-east-1"
+    dynamodb_table = "terraform-state-locking"
+    encrypt        = true
+  }
+
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      version = ">= 3.0"
+      version = "~> 3.0"
     }
-    # random = {
-    #   source  = "hashicorp/random"
-    #   version = "3.4.3"
-    # }
   }
-#   backend "s3" {
-#     bucket = "hashi-bucket"
-#     key    = "testlocation"
-#     region = "us-east-1"
-#   }
 }

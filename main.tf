@@ -14,18 +14,20 @@ provider "aws" {
 resource "aws_vpc" "example" {
   cidr_block = var.cidrBlock
 
-  tags = var.stgTaggs
+  tags = {
+    Name = "mytestvpc"
+  }
 }
 
 resource "aws_subnet" "my_subnet" {
-
   vpc_id            = aws_vpc.example.id
-  cidr_block        = "10.0.1.0/24"
+  cidr_block        = var.subnet_cidr
   availability_zone = "us-east-1a"
   #availability_zone = data.aws_availability_zones.available.names[0]
 
   tags = {
     #Name = random_pet.this.id
+    Name = "testing server"
   }
 }
 
@@ -48,15 +50,14 @@ resource "aws_subnet" "my_subnet" {
 #     }
 # }
 
-resource "aws_instance" "web" {
-  count = length(var.instanceTypes)
-  ami           = "ami-09d3b3274b6c5d4aa"
-  instance_type = "t2.micro"
+resource "aws_instance" "web" { 
+  ami           = var.local-ami
+  instance_type = var.instanceTypes
   subnet_id     = aws_subnet.my_subnet.id
  
   tags = {
     #Name = random_pet.this.id    
-    Name = "test ${count.index}"
+    Name = "test instance"
   }
 }
 

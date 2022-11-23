@@ -31,7 +31,9 @@ resource "aws_instance" "web" {
 	instance_type = "t2.micro"
 	subnet_id     = aws_subnet.main.id
 
-	tags = {
-		Name = var.ec2_name
-	}
+	#tags = var.v2_map
+}
+
+output "my_new_server" {
+  value = aws_instance.web.id
 }

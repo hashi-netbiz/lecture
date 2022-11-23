@@ -1,44 +1,23 @@
-variable "user_arn" {
+variable "subnet_cidr" {
    type = string
-   default = "arn:aws:iam::287074925751:user/jones"
+   default = "10.0.1.0/24"
 }
 
 variable "instanceTypes" {
-  description = "my dog list"
-  type = list
-  default = ["bristol","london","sheffield"]
+  description = "instance type"
+  type = string
+  default = "t2.micro"
 }
 
-variable "etMap" {
-  type = map
-  default = {
-    Name = "myvpc"   
-    env = "test"
-    manager ="jjkjjs"
-  }
+variable "local-ami" {
+  type = string
+  default = "ami-09d3b3274b6c5d4aa"
 }
 
 variable "cidrBlock" {
   description = "This is my dev cidr"
-  default = "192.168.0.0/24"
+  default = "10.0.0.0/16"
 }
 
-variable "stgTaggs" {
-  type = map
-  default = {
-    Name = "myvpc"   
-    env = "staging"
-    manager ="jjkjjs"
-  }
-}
-
-variable "prodTags" {
-  type = map
-  default = {
-    Name = "myvpc"   
-    env = "prod"
-    manager ="jjkjjs"
-  }
-}
 
 
