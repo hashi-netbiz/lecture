@@ -218,3 +218,7 @@ resource "aws_db_instance" "db_instance" {
   password                   = "foobarbaz"
   skip_final_snapshot        = true
 }
+
+# output "alb-url" {
+  
+# }

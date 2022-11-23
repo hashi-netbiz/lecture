@@ -155,6 +155,6 @@ resource "aws_subnet" "variables-subnet" {
   }
 }
 
-output "availablityZs" {
+output "checking_out_AZs_in_my_region" {
   value = data.aws_availability_zones.available
 }
