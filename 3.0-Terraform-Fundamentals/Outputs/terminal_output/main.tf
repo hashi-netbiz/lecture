@@ -30,3 +30,7 @@ output "my_map_out" {
 output "random_out" {
   value = random_integer.random.id
 }
+
+output "my_random_number" {
+  value = random_integer.random.id
+}
