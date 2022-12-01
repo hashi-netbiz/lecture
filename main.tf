@@ -11,25 +11,33 @@ provider "aws" {
 }
 
 //Create a VPC
-resource "aws_vpc" "example" {
-  cidr_block = var.cidrBlock
+# resource "aws_vpc" "example" {
+#   cidr_block = var.cidrBlock
 
-  tags = {
-    Name = "mytestvpc"
-  }
+#   tags = {
+#     Name = "mytestvpc"
+#   }
+# }
+
+module "our_class_vpc" {
+  source = "./modules-class"
+
+  cidr_block_hashi = var.cidrBlock
 }
 
-resource "aws_subnet" "my_subnet" {
-  vpc_id            = aws_vpc.example.id
-  cidr_block        = var.subnet_cidr
-  availability_zone = "us-east-1a"
-  #availability_zone = data.aws_availability_zones.available.names[0]
 
-  tags = {
-    #Name = random_pet.this.id
-    Name = "testing server"
-  }
-}
+ resource "aws_subnet" "my_subnet" {
+   #vpc_id            = aws_vpc.example.id
+   vpc_id = module.our_class_vpc.vpc_id
+   cidr_block        = var.subnet_cidr
+   availability_zone = "us-east-1a"
+   #availability_zone = data.aws_availability_zones.available.names[0]
+
+   tags = {
+     #Name = random_pet.this.id
+     Name = "testing server"
+   }
+ }
 
 # data "aws_ami" "ubuntu" {
 #     most_recent = true
@@ -50,16 +58,17 @@ resource "aws_subnet" "my_subnet" {
 #     }
 # }
 
-resource "aws_instance" "web" { 
-  ami           = var.local-ami
-  instance_type = var.instanceTypes
-  subnet_id     = aws_subnet.my_subnet.id
+ resource "aws_instance" "web" { 
+   ami           = var.local-ami
+   instance_type = var.instanceTypes
+   subnet_id     = aws_subnet.my_subnet.id
  
-  tags = {
-    #Name = random_pet.this.id    
-    Name = "test instance"
-  }
-}
+   tags = {
+     #Name = random_pet.this.id    
+     Name = "test instance"
+     type = var.alist[1]
+   }
+ }
 
 # resource "aws_s3_bucket" "michaelsbucket" {
 #   bucket = "my-tf-test-bucket-elvis"
@@ -110,7 +119,13 @@ resource "aws_instance" "web" {
 #   value = random_pet.this.id
 # }
 
+output "vpc_id" {
+  value = module.our_class_vpc.vpc_id
+}
 
+output "animal" {
+  value = var.alist[0]
+}
 
 
 

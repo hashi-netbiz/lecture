@@ -19,5 +19,10 @@ variable "cidrBlock" {
   default = "10.0.0.0/16"
 }
 
+variable "alist" {
+  type = list
+  default = ["elephant","tiger","pig"]
+}
+
 
 
