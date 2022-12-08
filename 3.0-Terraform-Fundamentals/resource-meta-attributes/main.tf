@@ -8,16 +8,21 @@ terraform {
 }
 
 provider "aws" {
-	region = "us-west-2"
-}
-
-provider "aws" {
-	alias  = "east"
 	region = "us-east-1"
 }
 
+provider "aws" {
+	alias  = "west"
+	region = "us-west-1"
+}
+
+provider "aws" {
+	alias  = "mumbai"
+	region = "ap-south-1"
+}
+
 # resource "aws_instance" "web" {
-# 	count         = 5
+# 	count         = 2
 # 	ami           = "ami-003634241a8fcdec0"
 # 	instance_type = "t2.micro"
 
@@ -33,47 +38,44 @@ provider "aws" {
 #aws_instance.web[0].id
 #aws_instance.web.*.id
 
-resource "aws_instance" "web" {
-	for_each = {
-		size1 = "t2.micro"
-		size2 = "t2.large"
-		size3 = "t2.large"
-	}
+# resource "aws_instance" "web" {
+# 	for_each = var.size
+# 	ami           = "ami-003634241a8fcdec0"
+# 	instance_type = each.value
 
-	ami           = "ami-003634241a8fcdec0"
-	instance_type = each.value
+# 	tags = {
+# 		Name = "${each.key}"
+# 	}
+# }
+#aws_instance.web["foo"].id
+
+
+resource "aws_instance" "web" {
+	provider      = aws.mumbai
+	ami           = "ami-0f5e8a042c8bfcd5e"
+	instance_type = "t2.micro"
 
 	tags = {
-		Name = each.key
+		Name = "Tuts in the west"
 	}
 }
-#aws_instance.web["foo"].id
 
 
 /*
 resource "aws_instance" "web" {
-	provider      = aws.east
-	ami           = "ami-085925f297f89fce1"
+	count = 2
+	provider      = aws.west
+	ami           = "ami-0f5e8a042c8bfcd5e"
 	instance_type = "t2.micro"
 
 	tags = {
-		Name = "Tuts in the east"
-	}
-}
-
-resource "aws_instance" "web" {
-	provider      = aws.east
-	ami           = "ami-085925f297f89fce1"
-	instance_type = "t2.micro"
-
-	tags = {
-		Name = "Tuts in the east"
+		Name = "instance ${count.index}"
 	}
 
-	lifecycle {
-		create_before_destroy = true
-		prevent_destroy       = true
-		ignore_changes        = [tags]
-	}
+	# lifecycle {
+	# 	#create_before_destroy = true
+	# 	#prevent_destroy       = true
+	# 	#ignore_changes        = [tags]
+	# }
 }
 */

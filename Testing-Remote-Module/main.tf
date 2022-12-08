@@ -39,3 +39,7 @@ module "vpc" {
      Name = "test instance"
    }
  }
+
+ output "dataklsdls" {
+   value  =  module.vpc.database_subnet_group
+ }

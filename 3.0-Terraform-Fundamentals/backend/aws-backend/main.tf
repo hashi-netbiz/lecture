@@ -27,6 +27,9 @@ provider "aws" {
 resource "aws_s3_bucket" "terraform_state" {
   bucket        = "devops-directive-tf-netbiz" # REPLACE WITH YOUR BUCKET NAME
   force_destroy = true
+  versioning {
+    
+  }
 }
 
 resource "aws_s3_bucket_versioning" "terraform_bucket_versioning" {
