@@ -9,8 +9,8 @@ variable "security_groups" {
 }
 
 variable "key_name" {
-
 }
+
 variable "private_key" {
 }
 

@@ -29,7 +29,8 @@ module "our_class_vpc" {
  resource "aws_subnet" "my_subnet" {
    #vpc_id            = aws_vpc.example.id
    vpc_id = module.our_class_vpc.vpc_id
-   cidr_block        = var.subnet_cidr
+   #cidr_block        = var.subnet_cidr
+   cidr_block = "10.0.2.0/24"
    availability_zone = "us-east-1a"
    #availability_zone = data.aws_availability_zones.available.names[0]
 
@@ -62,13 +63,36 @@ module "our_class_vpc" {
    ami           = var.local-ami
    instance_type = var.instanceTypes
    subnet_id     = aws_subnet.my_subnet.id
+   key_name = "hashi"
  
    tags = {
      #Name = random_pet.this.id    
      Name = "test instance"
      type = var.alist[1]
-   }
+   } 
+
+     lifecycle {
+    ignore_changes = [
+      # Ignore changes to tags, e.g. because a management agent
+      # updates these based on some ruleset managed elsewhere.
+      tags,
+    ]
+  }
  }
+
+resource "tls_private_key" "generated" {
+  algorithm = "RSA"
+}
+
+resource "local_file" "private_key_pem" {
+  content  = tls_private_key.generated.private_key_pem
+  filename = "test2.pem"
+}
+
+resource "aws_key_pair" "mykeypair" {
+  key_name = "test2"
+  public_key = tls_private_key.generated.public_key_openssh
+}
 
 # resource "aws_s3_bucket" "michaelsbucket" {
 #   bucket = "my-tf-test-bucket-elvis"
@@ -78,7 +102,6 @@ module "our_class_vpc" {
 #     Environment = "Dev"
 #   }
 # }
-
 
 # resource "aws_s3_bucket_policy" "bucket_policy" {
 #   bucket = "${aws_s3_bucket.michaelsbucket.id}"

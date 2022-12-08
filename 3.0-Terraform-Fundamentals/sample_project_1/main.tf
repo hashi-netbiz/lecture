@@ -180,8 +180,6 @@ resource "aws_instance" "ubuntu_server" {
   lifecycle {
     ignore_changes = [security_groups]
   }
-
-
 }
 
 # Terraform Resource Block - Security Group to Allow Ping Traffic
