@@ -69,7 +69,7 @@ module "our_class_vpc" {
      #Name = random_pet.this.id    
      Name = "test instance"
      type = var.alist[1]
-     env = "test"
+     env = "test12"
    } 
 
      lifecycle {
