@@ -37,6 +37,7 @@ module "our_class_vpc" {
    tags = {
      #Name = random_pet.this.id
      Name = "testing server"
+     env = "testing"
    }
  }
 
