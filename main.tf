@@ -38,6 +38,7 @@ module "our_class_vpc" {
      #Name = random_pet.this.id
      Name = "testing server"
      env = "testing"
+     CAR = BMW
    }
  }
 
