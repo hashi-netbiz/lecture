@@ -41,7 +41,9 @@ module "our_class_vpc" {
 
    tags = {
      #Name = random_pet.this.id
-     Name = upper("testing server")
+     Name = "testing server"
+     env = "testing"
+     CAR = "BMW"
    }
  }
 
@@ -74,6 +76,7 @@ module "our_class_vpc" {
      #Name = random_pet.this.id    
      Name = "test instance"
      type = var.alist[1]
+     env = "test12"
    } 
 
      lifecycle {
