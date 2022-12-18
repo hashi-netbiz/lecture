@@ -50,32 +50,32 @@ provider "aws" {
 #aws_instance.web["foo"].id
 
 
-resource "aws_instance" "web" {
-	provider      = aws.mumbai
-	ami           = "ami-0f5e8a042c8bfcd5e"
-	instance_type = "t2.micro"
+# resource "aws_instance" "web" {
+# 	provider      = aws.mumbai
+# 	ami           = "ami-0f5e8a042c8bfcd5e"
+# 	instance_type = "t2.micro"
 
-	tags = {
-		Name = "Tuts in the west"
-	}
-}
+# 	tags = {
+# 		Name = "Tuts in the west"
+# 	}
+# }
 
 
-/*
-resource "aws_instance" "web" {
-	count = 2
-	provider      = aws.west
-	ami           = "ami-0f5e8a042c8bfcd5e"
-	instance_type = "t2.micro"
 
-	tags = {
-		Name = "instance ${count.index}"
-	}
+# resource "aws_instance" "web" {
+# 	count = 2
+# 	provider      = aws.west
+# 	ami           = "ami-0f5e8a042c8bfcd5e"
+# 	instance_type = "t2.micro"
 
-	# lifecycle {
-	# 	#create_before_destroy = true
-	# 	#prevent_destroy       = true
-	# 	#ignore_changes        = [tags]
-	# }
-}
-*/
+# 	tags = {
+# 		Name = "instance ${count.index}"
+# 	}
+
+# 	# lifecycle {
+# 	# 	#create_before_destroy = true
+# 	# 	#prevent_destroy       = true
+# 	# 	#ignore_changes        = [tags]
+# 	# }
+# }
+

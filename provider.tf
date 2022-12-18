@@ -7,10 +7,20 @@ terraform {
   #   encrypt        = true
   # }
 
+  # backend "remote" {
+  #   hostname = "app.terraform.io"
+  #   organization = "example-org-2c0f83"
+
+  #   workspaces {
+  #     name = "dev-env"
+  #   }
+  # }
+
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      version = "~> 3.0"
+      version = "3.74.2"
     }
   }
 }
+
