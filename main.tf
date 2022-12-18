@@ -1,15 +1,20 @@
 
 # # Create Random Pet Resource
-# resource "random_pet" "this" {
-#   length = 2
-#   prefix = "hashi" 
-# }
+resource "random_pet" "this" {
+  length = 2
+  prefix = "hashi" 
+}
 
 # Configure the AWS Provider
 provider "aws" {
-  region = "us-east-1"
+  # shared_credentials_file = "$HOME/.aws/credentials"
+  # profile                 = "default"
+  region                  = "us-east-1"
 }
 
+locals {
+  ec2_key_name = random_pet.this.id
+}
 //Create a VPC
 # resource "aws_vpc" "example" {
 #   cidr_block = var.cidrBlock
@@ -36,7 +41,7 @@ module "our_class_vpc" {
 
    tags = {
      #Name = random_pet.this.id
-     Name = "testing server"
+     Name = upper("testing server")
    }
  }
 
@@ -86,11 +91,11 @@ resource "tls_private_key" "generated" {
 
 resource "local_file" "private_key_pem" {
   content  = tls_private_key.generated.private_key_pem
-  filename = "test2.pem"
+  filename = "${local.ec2_key_name}.pem"
 }
 
 resource "aws_key_pair" "mykeypair" {
-  key_name = "test2"
+  key_name = local.ec2_key_name
   public_key = tls_private_key.generated.public_key_openssh
 }
 
@@ -150,5 +155,8 @@ output "animal" {
   value = var.alist[0]
 }
 
+output "new-key" {
+  value = local.ec2_key_name
+}
 
 

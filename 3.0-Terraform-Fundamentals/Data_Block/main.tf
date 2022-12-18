@@ -158,3 +158,13 @@ resource "aws_subnet" "variables-subnet" {
 output "checking_out_AZs_in_my_region" {
   value = data.aws_availability_zones.available
 }
+
+output "avail_zones" {
+  value = data.aws_availability_zones.available
+}
+output "first_avail_zone" {
+  value = tolist(data.aws_availability_zones.available.names)[0]
+}
+output "current_region" {
+  value = data.aws_region.current
+}
