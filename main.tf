@@ -14,6 +14,7 @@ provider "aws" {
 
 locals {
   ec2_key_name = random_pet.this.id
+  car-type = "mercedes"
 }
 //Create a VPC
 # resource "aws_vpc" "example" {
